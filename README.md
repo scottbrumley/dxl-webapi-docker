@@ -22,7 +22,7 @@ __container.sh:__ Parameters Follow:
  
 config Directory
 ================ 
-1. After **./container.sh configclient** runs the following files will be created in the config directory:
+* After **./container.sh configclient** runs the following files will be created in the config directory:
    * ca.crt  
    * ca.key  
    * ca.pem  
@@ -30,6 +30,10 @@ config Directory
    * client.crt  
    * client.csr  
    * client.key  
+
+How to Run
+==========
+1. Run ./container.sh configclient <PEM password of choice>
 2. Import client.crt & ca.crt into ePO (Forcing a Wake Up of Agents on the brokers to transfer the certs)
 3. Export the brokerlist
 4. Export the brokercerts
