@@ -25,9 +25,9 @@ case "$1" in
 'configclient')
   echo "Building DXL Client Certs"
   openssl genrsa -out config/ca.pem 2048
-  openssl req -new -x509 -days 365 -extensions v3_ca -keyout config/ca.key -out config/ca.crt -subj "/C=US/ST=Georgia/L=Atlanta/O=McAfee/OU=HQ/CN=misp-mar.mcafee.com" -passout pass:${pempass}
+  openssl req -new -x509 -days 365 -extensions v3_ca -keyout config/ca.key -out config/ca.crt -subj "/C=US/ST=Georgia/L=Atlanta/O=McAfee/OU=HQ/CN=misp-mar.mcafee.com" -passout pass:${2}
   openssl genrsa -out config/client.key 2048
-  openssl req -out config/client.csr -key config/client.key -new -subj "/C=US/ST=Georgia/L=Atlanta/O=McAfee/OU=HQ/CN=misp-mar.mcafee.com" -passout pass:${pempass}
+  openssl req -out config/client.csr -key config/client.key -new -subj "/C=US/ST=Georgia/L=Atlanta/O=McAfee/OU=HQ/CN=misp-mar.mcafee.com" -passout pass:${2}
   openssl x509 -req -in config/client.csr -CA config/ca.crt -CAkey config/ca.key -CAcreateserial -out config/client.crt -days 365
 ;;
 
