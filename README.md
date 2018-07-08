@@ -12,6 +12,7 @@ __VARS File:__
 __container.sh:__ Parameters Follow:
  1.   **dxlclient** - Install the DXLClient Locally (For Ubuntu 16.04 Systems)
  2.   **configclient** - Build Client Certficates to speak with DXL brokers
+ ..2. Add an argument to set the PEM password for the client certificate (i.e. configclient mypempassword).
  3.   **build** - Build the OpenDXL Web API Docker container
  4.   **remove** - Stop and remove the running docker container for this project
  5.   **run** - Run the OpenDXL Web API container
