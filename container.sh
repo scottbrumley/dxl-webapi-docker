@@ -18,17 +18,17 @@ case "$1" in
   cd opendxl-client-python/
   python setup.py install
   cp examples/dxlclient.config ../config
-  #cd ..
+  #cd ..-passout pass:${2}
   #python -m dxlclient updateconfig config ${epo} -t ${epoport} -u ${epouser} -p ${epopass} 
 ;;
 
 'configclient')
   echo "Building DXL Client Certs"
   openssl genrsa -out config/ca.pem 2048
-  openssl req -new -x509 -days 365 -extensions v3_ca -keyout config/ca.key -out config/ca.crt -subj "/C=US/ST=Georgia/L=Atlanta/O=McAfee/OU=HQ/CN=misp-mar.mcafee.com" -passout pass:${2}
+  openssl req -new -passout pass:${2} -x509 -days 365 -extensions v3_ca -keyout config/ca.key -out config/ca.crt -subj "/C=US/ST=Georgia/L=Atlanta/O=McAfee/OU=HQ/CN=misp-mar.mcafee.com"
   openssl genrsa -out config/client.key 2048
   openssl req -out config/client.csr -key config/client.key -new -subj "/C=US/ST=Georgia/L=Atlanta/O=McAfee/OU=HQ/CN=misp-mar.mcafee.com" -passout pass:${2}
-  openssl x509 -req -in config/client.csr -CA config/ca.crt -CAkey config/ca.key -CAcreateserial -out config/client.crt -days 365
+  openssl x509 -req -in config/client.csr -CA config/ca.crt -CAkey config/ca.key -CAcreateserial -out config/client.crt -days 365 -pasin pass:${2}
 ;;
 
 # Stop and Remove
