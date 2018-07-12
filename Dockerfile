@@ -73,7 +73,6 @@ RUN cd opendxl-tie-client-python && python setup.py install
 ADD config/brokercerts.crt /config/brokercerts.crt
 ADD config/client.crt /config/client.crt
 ADD config/client.key /config/client.key
-#ADD config/monitor.config /monitor.config
 
 # Install MISP MAR script
 RUN git clone https://github.com/scottbrumley/opendxl_web_api.git
