@@ -3,3 +3,4 @@ LOCATION=mcafee/opendxl_webapi
 CLIENT_CERT=webapi.localdomain
 CA_CERT=webapi-ca.localdomain
 PEM_PASS=mcafee
+FLASK_TOKEN=mcafee
