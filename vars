@@ -1,2 +1,4 @@
 NAME=opendxl_webapi
 LOCATION=mcafee/opendxl_webapi
+CLIENT_CERT=webapi.localdomain
+PEM_PASS=mcafee
