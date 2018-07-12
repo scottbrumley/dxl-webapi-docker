@@ -50,7 +50,7 @@ sudo docker build \
 'run')
 echo "Run Container ${NAME}"
 sudo docker run -it -d \
-    -e FLASK_TOKEN="${2}" \
+    -e FLASK_TOKEN="${FLASK_TOKEN}" \
     --name ${NAME} \
     --restart=unless-stopped \
     -p 5000:5000 \
@@ -61,7 +61,7 @@ sudo docker run -it -d \
 'debug')
 echo "Debug Container ${NAME}"
 sudo docker run -it \
-    -e FLASK_TOKEN="${2}" \
+    -e FLASK_TOKEN="${FLASK_TOKEN}" \
     --name ${NAME} \
     --restart=unless-stopped \
     -p 5000:5000 \
