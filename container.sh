@@ -22,10 +22,13 @@ case "$1" in
   #python -m dxlclient updateconfig config ${epo} -t ${epoport} -u ${epouser} -p ${epopass} 
 ;;
 
-'configclient')
-  echo "Building DXL Client Certs"
+'cacert')
   openssl genrsa -out config/ca.pem 2048
   openssl req -new -passout pass:${PEM_PASS} -x509 -days 365 -extensions v3_ca -keyout config/ca.key -out config/ca.crt -subj "/C=US/ST=Georgia/L=Atlanta/O=McAfee/OU=HQ/CN=${CA_CERT}"
+;;
+
+'clientcert')
+  echo "Building DXL Client Certs"
   openssl genrsa -out config/client.key 2048
   openssl req -out config/client.csr -key config/client.key -new -subj "/C=US/ST=Georgia/L=Atlanta/O=McAfee/OU=HQ/CN=${CLIENT_CERT}" -passout pass:${PEM_PASS}
   openssl x509 -req -in config/client.csr -CA config/ca.crt -CAkey config/ca.key -CAcreateserial -out config/client.crt -days 365 -passin pass:${PEM_PASS}
